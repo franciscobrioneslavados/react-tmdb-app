@@ -1,25 +1,35 @@
-import logo from './logo.svg';
+import React from 'react';
 import './App.css';
+import {Routes,Route} from "react-router-dom";
+import Navbar from './components/Navbar';
+import Home from './components/Home';
+import TopRated from './components/TopRated';
+import Popular from './components/Popular';
+import LoginPage from './components/LoginPage';
+import ErrorPage from './components/ErrorPage';
+import ProfilePage from './components/ProfilePage';
+import Details from './components/DetailPage/Details';
 
-function App() {
+export default function App() {
+  const navRoutes = [
+    { title: 'Ana Sayfa', path: '/', element: <Home />, isNav: true },
+    { title: 'Top Rated', path: 'toprated', element: <TopRated />, isNav: true },
+    { title: 'Popular', path: 'popular', element: <Popular /> },
+    { title: 'Login', path: 'login', element: <LoginPage /> },
+    { title: 'Error', path: 'loginerror', element: <ErrorPage /> },
+    { title: 'Profile', path: 'profile', element: <ProfilePage /> },
+    { title: 'Detail', path: 'detail/:movieId', element: <Details /> },
+  
+  ];
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <Navbar />
+      <Routes>
+      {navRoutes.map((item,index)=>(<Route key={index} path={item.path} element={item.element}></Route>))}
+      
+      </Routes>
+      
+    </>
   );
 }
-
-export default App;

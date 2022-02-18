@@ -1,0 +1,17 @@
+import React from "react";
+import FavFilled from "./FavFilled";
+
+function ButtonCard({ id }) {
+  return (
+    <>
+      <div
+        className="card"
+        style={{ width: "16rem", backgroundColor: "#ecf0f1" }}
+      >
+        <FavFilled id={id} />
+      </div>
+    </>
+  );
+}
+
+export default ButtonCard;
